@@ -28,7 +28,7 @@ function login(){
     }else{
       document.getElementById('status').innerHTML = 'We are not logged in ';
     }
-  });
+  }, {scope:  'email'});
 }
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
