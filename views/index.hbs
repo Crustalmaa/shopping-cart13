@@ -63,7 +63,7 @@ function login(){
 document.getElementById('login-btn').onclick = function() {
   FB.login(function(response) {
     Log.info('FB.login response', response);
-  }, {scope: 'user_friends, email, likes'});
+  }, {scope: 'user_friends, public_profile'});
   return false;
 }
 </script>
