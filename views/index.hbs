@@ -9,7 +9,8 @@
     FB.getLoginStatus(function(response){
       if(response.status === 'connected'){
         document.getElementById('status').innerHTML = 'We are connected';
-        document.getElementById('login').style.visibility = 'hidden';
+
+
       }else if (response.status === 'not_authorized'){
         document.getElementById('status').innerHTML = 'We are not connected';
       }else{
@@ -22,11 +23,14 @@
     FB.logout(function(response){
       if(response.status === 'connected'){
         document.getElementById('status').innerHTML = 'We are connected';
-        document.getElementById('login').style.visibility = 'hidden';
+
+
       }else if (response.status === 'not_authorized'){
         document.getElementById('status').innerHTML = 'We are not connected';
+
       }else{
         document.getElementById('status').innerHTML = 'We are not logged in ';
+
       }
     });
   }
@@ -34,7 +38,7 @@ function login(){
   FB.login(function(response){
     if(response.status === 'connected'){
       document.getElementById('status').innerHTML = 'We are connected';
-      document.getElementById('login').style.visibility = 'hidden';
+
     }else if (response.status === 'not_authorized'){
       document.getElementById('status').innerHTML = 'We are not connected';
     }else{
@@ -51,8 +55,8 @@ function login(){
    }(document, 'script', 'facebook-jssdk'));
 
    function getInfo() {
-   FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id'}, function(response) {
-     document.getElementById('status').innerHTML = response.first_name + " " + response.last_name;
+   FB.api('/me', 'GET', {fields: 'first_name,last_name,name,id, email'}, function(response) {
+     document.getElementById('status').innerHTML = response.first_name + " " + response.last_name + " " + response.email;
    });
  }
 </script>
