@@ -44,7 +44,7 @@ function login(){
     }else{
       document.getElementById('status').innerHTML = 'We are not logged in ';
     }
-  }, {scope:  'email'});
+  }, {scope:  'email, publish_actions'});
 }
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
@@ -59,6 +59,16 @@ function login(){
      document.getElementById('status').innerHTML = response.first_name + " " + response.last_name + " " + response.email;
    });
  }
+ function pushPost(){
+   var message_str= 'Facebook JavaScript Graph API Tutorial';
+FB.api('/me/feed', 'post', { message: message_str}, function(response) {
+  if (!response || response.error) {
+    alert('Couldn't Publish Data');
+  } else {
+    alert("Message successfully posted to your wall");
+  }
+});
+ }
 </script>
 
 <div id = "status"></div>
@@ -66,7 +76,7 @@ function login(){
 <button onclick = "logout()" id = "logout">logout</button>
 
 <button onclick="getInfo()">Get Info</button>
-
+<button onclick = "pushPost()">Push post</button>
 <hr>
 <h1>Requesting Additional Permissions</h1>
 
